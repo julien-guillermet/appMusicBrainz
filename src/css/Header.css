@@ -1,0 +1,32 @@
+.site-header {
+    background-color: #2c3440;
+    margin-bottom: 15px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    display: grid;
+    grid-template-columns: 40% 10% 25% 15% 10%;
+}
+
+.site-logo {
+    grid-column: 1;
+    color: white;
+    margin-left: 20px;
+}
+
+.button_home {
+    grid-column: 2;
+    color: white;
+    letter-spacing: 0.8px;
+}
+
+.button_fav {
+    grid-column: 3;
+    color: white;
+    letter-spacing: 0.8px;
+}
+
+.search_bar{
+    grid-column: 4;
+}
