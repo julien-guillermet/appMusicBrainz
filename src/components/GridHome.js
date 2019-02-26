@@ -45,7 +45,8 @@ class GridHome extends Component {
         items: response.data.data.search.artists.nodes
       }));
 */
-    } catch (error) {
+    } 
+    catch (error) {
       // If there's an error, set the error to the state
       this.setState(() => ({ error }))
     }
@@ -77,7 +78,6 @@ class GridHome extends Component {
               lifeSpan {
                 begin
                 end
-                ended
               }
               tags {
                 nodes {
@@ -90,7 +90,6 @@ class GridHome extends Component {
                   firstReleaseDate
                   coverArtArchive {
                     images {
-                      image
                       image
                     }
                   } 
