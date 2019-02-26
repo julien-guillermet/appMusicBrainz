@@ -18,7 +18,6 @@ const GridItem = (props) => (
 class GridHome extends Component {
   state = {
     error: null,
-    isLoaded: false,
     items: [],
   }
 
@@ -33,27 +32,15 @@ class GridHome extends Component {
         variables
       });
 
-      // Log the response so we can look at it in the console
-      //console.log(response.data)
-
       const action = { type: 'UPDATE_ITEMS_LIST', new_itemsList: response.data.data.search.artists.nodes};
       this.props.dispatch(action);
-      // Set the data to the state
-      /*
-      this.setState(() => ({
-        isLoaded: true,
-        items: response.data.data.search.artists.nodes
-      }));
-*/
     } 
     catch (error) {
-      // If there's an error, set the error to the state
       this.setState(() => ({ error }))
     }
   }
 
    searchYourArtist = () => {
-    // This is the GraphQL query
     const query = `
     query FindYourArtist ($nameArtist: String!) {
       search {
@@ -101,7 +88,6 @@ class GridHome extends Component {
     }  
     `;
     const variables = { nameArtist: this.props.SearchedArtist.searchedArtist};
-    //console.log(this.state.artistSearched)
     if (this.props.SearchedArtist.searchedArtist !== "")
       this.getArtists(query, variables)
   }
