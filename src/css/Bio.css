@@ -68,4 +68,8 @@
     object-fit: cover;
     border: 1px solid #353434;
   }
+
+  .toastPopup {
+      margin-top: 60px;
+  }
   

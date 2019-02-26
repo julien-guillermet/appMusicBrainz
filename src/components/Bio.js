@@ -4,6 +4,8 @@ import like_no from "../assets/like_no.png"
 import like_yes from "../assets/like_yes.png"
 import { connect } from 'react-redux';
 import '../css/Bio.css';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const GridItem = (props) => (
@@ -15,6 +17,9 @@ const GridItem = (props) => (
   )
 
 class Bio extends Component {
+
+    notifyAdd = (artist) => toast( artist.name + " has been added to your favorites !");
+    notifyDelete = (artist) => toast( artist.name + " has been deleted from your favorites !");
 
     addToMyFavList = (artist) => {
         let i = 0;
@@ -28,17 +33,20 @@ class Bio extends Component {
             }
             if (value === 0)
             {
+                this.notifyAdd(artist)
                 const action = { type: 'ADD_ON_FAV', artistInfos: artist};
                 this.props.dispatch(action);
             }
             if (value !== 0)
             {
+                this.notifyDelete(artist)
                 const action = { type: 'REMOVE_FROM_FAV', artistPosition: i-1};
                 this.props.dispatch(action);
             }
         }
         else if (this.props.ArtistsFav.favorites.length === 0)
         {
+            this.notifyAdd(artist)
             const action = { type: 'ADD_ON_FAV', artistInfos: artist};
             this.props.dispatch(action);
         }
@@ -92,7 +100,8 @@ class Bio extends Component {
             <Fragment>
             <div className='section'>
                 <img src={artist.fanArt.backgrounds.length > 0 ? artist.fanArt.backgrounds[0].url : 'https://nsa40.casimages.com/img/2019/02/25/190225081050657766.jpg'} className='imageBackground' alt='background'/>
-                <img src={this.favOrNot(artist)} alt="my_like" onClick= {() => this.addToMyFavList(artist)} className='imageLike'/>
+                <img src={this.favOrNot(artist)} alt='my_like' onClick= {() => this.addToMyFavList(artist)} className='imageLike'/>
+                <ToastContainer autoClose={3000} className='toastPopup'/>
                 <table className='table'>
                 <tr>
                     <td className='casTabLeft'>Name :</td>
