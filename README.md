@@ -7,4 +7,9 @@ you can check it here :
 https://jolly-swirles-280275.netlify.com/
 
 
-build with ReactJs & graphQL
+concepts used:
+- React Router v4
+- Redux
+- GraphQL
+- Axios
+- API MusicBrainz
